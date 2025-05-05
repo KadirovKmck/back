@@ -35,7 +35,6 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
-    "jazzmin",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -49,15 +48,6 @@ INSTALLED_APPS = [
     "rest_framework",
 ]
 
-
-JAZZMIN_SETTINGS = {
-    "site_title": "API-for-Students Admin",
-    "site_header": "API-for-Students",
-    "welcome_sign": "Добро пожаловать!",
-    "copyright": "© 2025 Muhammadaziz",
-    # пример изменения иконки модели
-    "icons": {"api.item": "fas fa-box"},
-}
 
 REST_FRAMEWORK = {
     "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
