@@ -16,7 +16,8 @@ STATICFILES_DIRS = []
 # ---------- База данных ----------
 # ① читаем переменную; .get вернёт '' если её нет
 
-DATABASE_URL = os.getenv("DATABASE_URL")
+DATABASE_URL = os.getenv("DATABASE_URL", "").strip()
+
 if DATABASE_URL:
     DATABASES = {
         "default": dj_database_url.parse(
@@ -26,10 +27,9 @@ if DATABASE_URL:
         )
     }
 else:
-    # fallback для локальной разработки
     DATABASES = {
         "default": {
-            "ENGINE": 'django.db.backends.postgresql',
+            "ENGINE": 'django.db.backends.sqlite3',
             "NAME": BASE_DIR / "db.sqlite3"
         }
     }
