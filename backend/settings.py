@@ -13,22 +13,20 @@ STATICFILES_DIRS = []
 
 
 
-if os.getenv("DATABASE_URL"):          # внешний Postgres
+# ---------- База данных ----------
+# ① читаем переменную; .get вернёт '' если её нет
+
+DATABASE_URL = os.getenv("DATABASE_URL")
+
+if DATABASE_URL:                                  # Vercel / docker / prod
     DATABASES = {
-        "default": dj_database_url.config(
-            default=os.getenv("DATABASE_URL"),
+        "default": dj_database_url.parse(
+            DATABASE_URL,
             conn_max_age=600,
-            ssl_require=True,
+            conn_health_checks=True,
         )
     }
-elif os.getenv("VERCEL"):              # fallback для Vercel без Postgres
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.sqlite3",
-            "NAME": "/tmp/db.sqlite3",
-        }
-    }
-else:                                  # локальная разработка
+else:                                             # локальная разработка
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.sqlite3",
