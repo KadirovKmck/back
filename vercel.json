@@ -15,5 +15,6 @@
             "src": "/(.*)",
             "dest": "vercel_app.py"
         }
-    ]
+    ],
+    "env": {}
 }
