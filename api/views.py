@@ -1,10 +1,7 @@
-from rest_framework import mixins, viewsets
+from rest_framework.viewsets import ModelViewSet
 from .models import Item
 from .serializers import ItemSerializer
 
-class ItemViewSet(mixins.ListModelMixin,
-                  mixins.CreateModelMixin,
-                  mixins.DestroyModelMixin,
-                  viewsets.GenericViewSet):
+class ItemViewSet(ModelViewSet):
     queryset = Item.objects.all()
     serializer_class = ItemSerializer
