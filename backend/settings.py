@@ -1,6 +1,6 @@
 from pathlib import Path
 from dotenv import load_dotenv
-import os
+import dj_database_url, os
 
 load_dotenv()
 
@@ -12,14 +12,14 @@ STATIC_ROOT = BASE_DIR / "staticfiles"      # ← папка куда collectsta
 STATICFILES_DIRS = []
 
 
-if os.environ.get("VERCEL"):       
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.sqlite3",
-            "NAME": "/tmp/db.sqlite3",
-        }
-    }
 
+DATABASES = {
+    "default": dj_database_url.config(
+        default=os.getenv("DATABASE_URL"),
+        conn_max_age=600,
+        ssl_require=True,
+    )
+}
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
