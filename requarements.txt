@@ -1,0 +1,16 @@
+asgiref==3.8.1
+attrs==25.3.0
+Django==5.2
+django-jazzmin @ git+https://github.com/farridav/django-jazzmin.git@d269874c96fe5ff6d231c3017cdd4650bc2f3105
+djangorestframework==3.16.0
+drf-spectacular @ git+https://github.com/tfranzel/drf-spectacular.git@16aadff81c71e7b807abd705e597a0f2c6a534cf
+inflection==0.5.1
+jsonschema==4.23.0
+jsonschema-specifications==2025.4.1
+pillow==11.2.1
+python-dotenv==1.1.0
+PyYAML==6.0.2
+referencing==0.36.2
+rpds-py==0.24.0
+sqlparse==0.5.3
+uritemplate==4.1.1
